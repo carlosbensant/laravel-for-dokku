@@ -5,7 +5,7 @@ MAINTAINER Carlos Bensant <info@spot.com.do>
 
 
 # Install Dependecies
-RUN apt-get update && apt-get upgrade \
+RUN apt-get update && apt-get upgrade && \
   apt-get install -y --force-yes software-properties-common curl && \
   apt-add-repository ppa:ondrej/php -y && \
   apt-get update && \
