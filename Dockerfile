@@ -12,14 +12,7 @@ RUN apt-get update && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:ondrej/php && \
     apt-get update && apt-get -y upgrade
-RUN apt-get -y install curl nginx zip supervisor git php7.2 php7.2-mysql php7.2-zip php7.2-imap php7.2-memcached php7.2-fpm php7.2-mbstring php7.2-xml php7.2-curl php7.2-intl php7.2-readline php7.1-cli php7.2-dev php7.2-gd php7.1-mcrypt
-
-
-RUN ln -s /etc/php/7.1/mods-available/mcrypt.ini /etc/php/7.2/mods-available/
-
-
-# Enable mcrypt
-RUN phpenmod mcrypt
+RUN apt-get -y install curl nginx zip supervisor git php7.2 php7.2-mysql php7.2-zip php7.2-imap php7.2-memcached php7.2-fpm php7.2-mbstring php7.2-xml php7.2-curl php7.2-intl php7.2-readline php7.1-cli php7.2-dev php7.2-gd
 
 
 # Install Composer
@@ -68,6 +61,8 @@ RUN mkdir /app
 WORKDIR /app
 RUN mkdir /app/public && touch /app/public/index.php && echo '<?php phpinfo();?>' > /app/public/index.php
 
+
 EXPOSE 80
+
 
 CMD ["/run.sh"]
